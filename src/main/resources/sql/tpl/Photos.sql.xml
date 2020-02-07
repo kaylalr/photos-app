@@ -1,0 +1,19 @@
+<sql>
+    <photos.getAll><![CDATA[
+        Select * from app.photo where archived is not true;
+    ]]></photos.getAll>
+    <photos.uploadPhoto><![CDATA[
+        Insert into app.photo (filename, message, url)
+        values (
+            :filename,
+            :message,
+            :url
+        );
+    ]]></photos.uploadPhoto>
+    <photos.deletePhoto><![CDATA[
+        Update app.photo set archived = true where id = :id;
+    ]]></photos.deletePhoto>
+    <photos.getOnePhoto><![CDATA[
+        Select * from app.photo where archived is not true and id = :id
+    ]]></photos.getOnePhoto>
+</sql>
